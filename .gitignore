@@ -3,9 +3,10 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-api.log
-api.log.*
 src/main/resources/application.properties
+.env
+app.log
+app.log.*
 
 ### STS ###
 .apt_generated
