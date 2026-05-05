@@ -3,9 +3,11 @@ package com.mickey.task_manager_api.services;
 import com.mickey.task_manager_api.models.Task;
 import com.mickey.task_manager_api.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TaskService {
     @Autowired
     TaskRepository taskRepo;
@@ -15,7 +17,7 @@ public class TaskService {
     }
 
     public List<Task> getAllTask(){
-        return taskRepo.findAll();
+        return taskRepo.findAll().stream().toList();
     }
 
     public Task findTaskById(int id){

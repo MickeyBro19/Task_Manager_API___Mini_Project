@@ -1,0 +1,33 @@
+package com.mickey.task_manager_api;
+
+import com.mickey.task_manager_api.models.Task;
+import com.mickey.task_manager_api.services.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/tasks")
+public class TaskController {
+    @Autowired
+    TaskService service;
+
+    @PostMapping
+    public ResponseEntity<Task> createTask(@RequestBody Task task){
+        return  ResponseEntity.status(HttpStatus.OK).body(service.createTask(task));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Task>> getAllTasks(){
+        return ResponseEntity.ok(service.getAllTask());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Task> findTaskById(@RequestParam int id){
+        return ResponseEntity.status(HttpStatus.FOUND).body(service.findTaskById(id)) ;
+    }
+}
