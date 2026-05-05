@@ -4,18 +4,17 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter @Setter
 @Entity
 public class Task {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int task_id;
-    @Getter @Setter
+
     private String task;
-    @Getter @Setter
     private String details;
-    @Getter @Setter
     private String status;
 
-    @Setter @Getter
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;

@@ -1,4 +1,4 @@
-package com.mickey.task_manager_api;
+package com.mickey.task_manager_api.controllers;
 
 import com.mickey.task_manager_api.models.Task;
 import com.mickey.task_manager_api.services.TaskService;
@@ -16,7 +16,7 @@ public class TaskController {
     @Autowired
     TaskService service;
 
-    @PostMapping
+    @PostMapping("/user/{userId}")
     public ResponseEntity<Task> createTask(@PathVariable int userId, @RequestBody Task task){
         return  ResponseEntity.status(HttpStatus.CREATED).body(service.createTask(userId,task));
     }
@@ -27,7 +27,7 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Task> findTaskById(@RequestParam int id){
-        return ResponseEntity.status(HttpStatus.FOUND).body(service.findTaskById(id)) ;
+    public ResponseEntity<Task> findTaskById(@PathVariable int id){
+        return ResponseEntity.status(HttpStatus.OK).body(service.findTaskById(id)) ;
     }
 }

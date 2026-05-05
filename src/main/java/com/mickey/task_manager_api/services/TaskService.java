@@ -26,7 +26,7 @@ public class TaskService {
     }
 
     public List<Task> getAllTask(){
-        return taskRepo.findAll().stream().toList();
+        return taskRepo.findAll();
     }
 
     public Task findTaskById(int id){
