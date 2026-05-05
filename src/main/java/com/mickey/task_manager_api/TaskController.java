@@ -17,8 +17,8 @@ public class TaskController {
     TaskService service;
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody Task task){
-        return  ResponseEntity.status(HttpStatus.OK).body(service.createTask(task));
+    public ResponseEntity<Task> createTask(@PathVariable int userId, @RequestBody Task task){
+        return  ResponseEntity.status(HttpStatus.CREATED).body(service.createTask(userId,task));
     }
 
     @GetMapping
