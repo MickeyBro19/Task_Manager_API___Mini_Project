@@ -34,4 +34,14 @@ public class TaskService {
                 .orElseThrow(()->new RuntimeException("Task not Found"));
     }
 
+    public List<Task> getTaskByUserId(int id){
+        return taskRepo.findByUserId(id);
+    }
+    public List<Task> getTaskByStatus(String status){
+        return taskRepo.findByStatus(status);
+    }
+    public List<Task> getTaskByUserIdAndStatus(String status,int id){
+        return taskRepo.findByUserIdAndStatus(status,id);
+    }
+
 }
