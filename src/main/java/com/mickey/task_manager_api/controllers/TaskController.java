@@ -30,4 +30,22 @@ public class TaskController {
     public ResponseEntity<Task> findTaskById(@PathVariable int id){
         return ResponseEntity.status(HttpStatus.OK).body(service.findTaskById(id)) ;
     }
+
+    @GetMapping("user/{userId}")
+    public ResponseEntity<List<Task>> getTaskByUserId (@PathVariable int userId){
+        return ResponseEntity.ok(service.getTaskByUserId(userId));
+    }
+    @GetMapping("status/{status}")
+    public ResponseEntity<List<Task>> getTaskByStatus (@PathVariable String status){
+        return ResponseEntity.ok(service.getTaskByStatus(status));
+    }
+    @GetMapping("/user/{userId}/status/{status}")
+    public ResponseEntity<List<Task>> getTasksByUserAndStatus(
+            @PathVariable int userId,
+            @PathVariable String status) {
+
+        return ResponseEntity.ok(
+                service.getTaskByUserIdAndStatus(status, userId)
+        );
+    }
 }
