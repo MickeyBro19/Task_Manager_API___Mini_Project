@@ -9,14 +9,14 @@ import lombok.Setter;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int task_id;
+    private int taskId;
 
     private String task;
     private String details;
     private String status;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="userId")
     private User user;
 
 }

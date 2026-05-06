@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task,Integer> {
-    List<Task> findByUserId(int id);
+    List<Task> findByUserUserId(int userId);
     List<Task> findByStatus(String status);
-    List<Task> findByUserIdAndStatus(String status, int id);
+    List<Task> findByUserUserIdAndStatus(String status, int userId);
 }
